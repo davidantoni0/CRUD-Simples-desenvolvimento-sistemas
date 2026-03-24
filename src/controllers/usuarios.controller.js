@@ -1,0 +1,58 @@
+import { usuarios } from "../data/usuarios.js"
+
+export function listarUsuarios(req, res) {
+	res.json(usuarios)
+}
+
+export function criarUsuario(req, res) {
+
+	const { usuario } = req.body
+
+	if (!usuario) {
+		return res.json({ error: "O campo 'usuario' é obrigatório." })
+	}
+
+	const novoUsuario = {
+		id: usuarios.length + 1,
+		usuario,
+		ativo: true
+	}
+	usuarios.push(novoUsuario)
+	res.json(novoUsuario)
+
+}
+
+export function BuscarUsuarioPorId(req, res) {
+	const { id } = req.params
+	const usuarioEncontrado = usuarios.find(usuario => usuario.id === parseInt(id))
+	if (!usuarioEncontrado) {
+		return res.json({ error: "Usuário não encontrado." })
+	}
+	res.json(usuarioEncontrado)
+}
+
+export function deletarUsuarioPorId(req, res) {
+	const { id } = req.params
+	const usuarioIndex = usuarios.findIndex(usuario => usuario.id === parseInt(id))
+	if (usuarioIndex === -1) {
+		return res.json({ error: "Usuário não encontrado." })
+	}
+	usuarios.splice(usuarioIndex, 1)
+	res.json({ message: "Usuário deletado com sucesso." })
+}
+
+export function atualizarUsuarioPorId(req, res) {
+	const { id } = req.params
+	const { usuario, ativo } = req.body
+	const usuarioEncontrado = usuarios.find(usuario => usuario.id === parseInt(id))
+	if (!usuarioEncontrado) {
+		return res.json({ error: "Usuário não encontrado." })
+	}
+
+	usuarioEncontrado.usuario = usuario
+	
+	if (ativo !== undefined) {
+		usuarioEncontrado.ativo = ativo
+	}
+	res.json(usuarioEncontrado)
+}

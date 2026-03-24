@@ -1,0 +1,24 @@
+GET http://localhost:3000/livros
+###
+
+POST http://localhost:3000/livros
+Content-Type: application/json
+
+{
+    "titulo": "Livro 3"
+}
+###
+
+GET http://localhost:3000/livros/1
+###
+
+DELETE http://localhost:3000/livros/1
+###
+
+PUT http://localhost:3000/livros/1
+Content-Type: application/json
+
+{
+    "titulo": "Livro 3 Atualizado"
+}
+###
