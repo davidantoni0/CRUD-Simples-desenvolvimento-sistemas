@@ -54,3 +54,14 @@ export function atualizarLivroPorId(req, res) {
 
     res.json(livroEncontrado)
 }
+
+export function liberarLivro(req, res) {
+  const { idLivro } = req.params;
+  const livro = livros.find(l => l.id == idLivro);
+
+  if (!livro) return res.send("Livro não encontrado");
+  if (!livro.usuarioId) return res.send("Livro não está com nenhum usuário");
+
+  livro.usuarioId = null;
+  res.json(livro);
+}
