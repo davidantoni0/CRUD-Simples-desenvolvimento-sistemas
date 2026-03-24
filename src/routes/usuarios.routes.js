@@ -4,6 +4,7 @@ import { criarUsuario } from "../controllers/usuarios.controller.js"
 import { BuscarUsuarioPorId } from "../controllers/usuarios.controller.js"
 import { deletarUsuarioPorId } from "../controllers/usuarios.controller.js"
 import { atualizarUsuarioPorId } from "../controllers/usuarios.controller.js"
+import { vincularLivro } from "../controllers/usuarios.controller.js"
 const router = Router()
 
 router.get("/usuarios", listarUsuarios )
@@ -11,5 +12,5 @@ router.post("/usuarios", criarUsuario )
 router.get("/usuarios/:id", BuscarUsuarioPorId )
 router.delete("/usuarios/:id", deletarUsuarioPorId )
 router.put("/usuarios/:id", atualizarUsuarioPorId )
-
+router.patch("/usuarios/:idUsuario/livros/:idLivro/vincular", vincularLivro )
 export default router

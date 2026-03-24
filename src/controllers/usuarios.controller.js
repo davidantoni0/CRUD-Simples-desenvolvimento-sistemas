@@ -1,3 +1,4 @@
+import { livros } from "../data/livros.js"
 import { usuarios } from "../data/usuarios.js"
 
 export function listarUsuarios(req, res) {
@@ -55,4 +56,17 @@ export function atualizarUsuarioPorId(req, res) {
 		usuarioEncontrado.ativo = ativo
 	}
 	res.json(usuarioEncontrado)
+}
+
+export function vincularLivro(req, res) {
+  const { idUsuario, idLivro } = req.params;
+  const usuario = usuarios.find(usuarios => usuarios.id == idUsuario);
+  const livro = livros.find(livros => livros.id == idLivro);
+
+  if (!usuario) return res.send("Usuário não encontrado");
+  if (!livro) return res.send("Livro não encontrado");
+  if (livro.usuarioId) return res.send("Livro já está com outro usuário");
+
+  livro.usuarioId = usuario.id;
+  res.json(livro);
 }
