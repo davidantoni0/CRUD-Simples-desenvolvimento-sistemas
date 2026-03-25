@@ -1,10 +1,11 @@
 import { Router } from "express"
-import { listarLivros } from "../controllers/livros.controller.js"
-import { criarLivro } from "../controllers/livros.controller.js"
-import { buscarLivroPorId } from "../controllers/livros.controller.js"
-import { deletarLivroPorId } from "../controllers/livros.controller.js"
-import { atualizarLivroPorId } from "../controllers/livros.controller.js"
-import { liberarLivro} from "../controllers/livros.controller.js"
+import { 
+    listarLivros,
+    criarLivro,
+    buscarLivroPorId,
+    deletarLivroPorId,
+    atualizarLivroPorId,
+    liberarLivro} from "../controllers/livros.controller.js"
 const router = Router()
 
 router.get("/livros", listarLivros )

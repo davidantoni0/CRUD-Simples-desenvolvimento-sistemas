@@ -1,10 +1,12 @@
 import { Router } from "express"
-import { listarUsuarios } from "../controllers/usuarios.controller.js"
-import { criarUsuario } from "../controllers/usuarios.controller.js"
-import { buscarUsuarioPorId } from "../controllers/usuarios.controller.js"
-import { deletarUsuarioPorId } from "../controllers/usuarios.controller.js"
-import { atualizarUsuarioPorId } from "../controllers/usuarios.controller.js"
-import { vincularLivro } from "../controllers/usuarios.controller.js"
+import { 
+    listarUsuarios,
+    criarUsuario,
+    buscarUsuarioPorId,
+    deletarUsuarioPorId,
+    atualizarUsuarioPorId,
+    vincularLivro } from "../controllers/usuarios.controller.js"
+    
 const router = Router()
 
 router.get("/usuarios", listarUsuarios )
