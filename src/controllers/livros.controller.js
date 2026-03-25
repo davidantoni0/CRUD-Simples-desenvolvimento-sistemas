@@ -26,7 +26,7 @@ export function criarLivro(req, res) {
 
 }
 
-export function BuscarLivroPorId(req, res) {
+export function buscarLivroPorId(req, res) {
     const { id } = req.params
     const livroEncontrado = livros.find(livro => livro.id === parseInt(id))
     if (!livroEncontrado) {

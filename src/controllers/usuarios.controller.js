@@ -27,7 +27,7 @@ export function criarUsuario(req, res) {
 
 }
 
-export function BuscarUsuarioPorId(req, res) {
+export function buscarUsuarioPorId(req, res) {
 	const { id } = req.params
 	const usuarioEncontrado = usuarios.find(usuario => usuario.id === parseInt(id))
 	if (!usuarioEncontrado) {
