@@ -12,8 +12,12 @@ export function criarLivro(req, res) {
         return res.json({ error: "O campo 'titulo' é obrigatório." })
     }
 
+    const novoId = livros.length > 0
+    ? livros[livros.length - 1].id + 1
+    : 1
+
     const novoLivro = {
-        id: livros.length + 1,
+        id: novoId,
         titulo,
         usuarioId: null
     }

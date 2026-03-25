@@ -13,8 +13,12 @@ export function criarUsuario(req, res) {
 		return res.json({ error: "O campo 'usuario' é obrigatório." })
 	}
 
+	const novoId = usuarios.length > 0
+    ? usuarios[usuarios.length - 1].id + 1
+    : 1
+
 	const novoUsuario = {
-		id: usuarios.length + 1,
+		id: novoId,
 		usuario,
 		ativo: true
 	}
