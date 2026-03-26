@@ -22,7 +22,7 @@ export function criarLivro(req, res) {
     const novoLivro = {
         id: novoId,
         titulo,
-        usuarioId: null
+        usuarioId: dados.usuarioId ?? null
     }
     livros.push(novoLivro)
     res.status(201).json(novoLivro)
