@@ -1,8 +1,9 @@
 import { livros } from "../data/livros.js"
 import { usuarios } from "../data/usuarios.js"
+import { pool } from '../database/db.js';
 
 export function listarUsuarios(req, res) {
-	if(usuarios[0] == null){
+	if(usuarios.length === 0){
 		return res.status(200).json({ mensagem: "A lista está vazia."})
 	}
 	res.status(200).json(usuarios)
