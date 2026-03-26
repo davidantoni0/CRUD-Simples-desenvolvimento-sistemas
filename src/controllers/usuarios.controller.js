@@ -71,10 +71,10 @@ export function vincularLivro(req, res) {
   const usuario = usuarios.find(usuarios => usuarios.id == idUsuario);
   const livro = livros.find(livros => livros.id == idLivro);
 
-  if (!usuario) return res.send("Usuário não encontrado");
-  if (!livro) return res.send("Livro não encontrado");
-  if (livro.usuarioId) return res.send("Livro já está com outro usuário");
+  if (!usuario) return res.status(404).send("Usuário não encontrado");
+  if (!livro) return res.status(404).send("Livro não encontrado");
+  if (livro.usuarioId) return res.status(400).send("Livro já está com outro usuário");
 
   livro.usuarioId = usuario.id;
-  res.status(404).json(livro);
+  res.status(200).json(livro);
 }
