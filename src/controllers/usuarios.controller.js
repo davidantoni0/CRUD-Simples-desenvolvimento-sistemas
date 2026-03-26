@@ -1,6 +1,6 @@
 import { livros } from "../data/livros.js"
 import { usuarios } from "../data/usuarios.js"
-import { pool } from '../database/db.js';
+
 
 export function listarUsuarios(req, res) {
 	if(usuarios.length === 0){
