@@ -9,7 +9,7 @@ export function listarLivros(req, res) {
 
 export function criarLivro(req, res) {
 
-    const { titulo } = req.body
+    const { titulo,usuarioId } = req.body
 
     if (!titulo) {
         return res.status(400).json({ error: "O campo 'titulo' é obrigatório." })
@@ -22,7 +22,7 @@ export function criarLivro(req, res) {
     const novoLivro = {
         id: novoId,
         titulo,
-        usuarioId: dados.usuarioId ?? null
+        usuarioId: usuarioId ?? null
     }
     livros.push(novoLivro)
     res.status(201).json(novoLivro)
